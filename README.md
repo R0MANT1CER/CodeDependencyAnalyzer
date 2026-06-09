@@ -1,4 +1,6 @@
-﻿# BugScope - Code Dependency Analyzer / 代码依赖分析器
+﻿![BugScope Cover](cover.png)
+
+# BugScope - Code Dependency Analyzer / 代码依赖分析器
 
 > 🚀 A JavaFX desktop tool for scanning Java projects, building multi-level dependency graphs, and generating AI-assisted interactive visualizations.
 > 🚀 一款 JavaFX 桌面工具，用于扫描 Java 项目、构建多层级依赖图，并生成 AI 辅助的交互式可视化图表。
@@ -117,3 +119,4 @@ jpackage --type app-image --name CodeDependencyAnalyzer --input target --main-ja
 
 ## 📄 License / 许可证
 MIT
+
