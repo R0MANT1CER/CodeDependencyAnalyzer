@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.analyzer.controller.SettingsController"
+            style="-fx-padding: 25; -fx-font-family: 'Microsoft YaHei', 'Segoe UI'; -fx-font-size: 13;"
+            prefWidth="500" prefHeight="450">
+
+    <top>
+        <Label fx:id="lblSettingsTitle" text="Settings" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-padding: 0 0 15 0;"/>
+    </top>
+
+    <center>
+        <VBox spacing="18">
+
+            <!-- Appearance -->
+            <TitledPane fx:id="tpAppearance" animated="false" text="Appearance" expanded="true">
+                <VBox spacing="12" style="-fx-padding: 12;">
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label fx:id="lblTheme" text="Theme:" prefWidth="80"/>
+                        <ComboBox fx:id="themeCombo" prefWidth="150"/>
+                    </HBox>
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label fx:id="lblLanguage" text="Language:" prefWidth="80"/>
+                        <ComboBox fx:id="languageCombo" prefWidth="150"/>
+                    </HBox>
+                </VBox>
+            </TitledPane>
+
+            <!-- General -->
+            <TitledPane fx:id="tpGeneral" animated="false" text="General" expanded="true">
+                <VBox spacing="10" style="-fx-padding: 12;">
+                    <CheckBox fx:id="autoOpenCheck" text="Auto-open last project on startup"/>
+                    <CheckBox fx:id="autoMonitorCheck" text="Auto-monitor file changes"/>
+                    <CheckBox fx:id="autoSkillCheck" text="Auto-open Skill after generation"/>
+                </VBox>
+            </TitledPane>
+
+            <!-- Paths -->
+            <TitledPane fx:id="tpPaths" animated="false" text="Paths">
+                <VBox spacing="10" style="-fx-padding: 12;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="lblSkillPath" text="Skill save path:" prefWidth="100"/>
+                        <TextField fx:id="skillPathField" HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnBrowse" text="Browse..." onAction="#onBrowseSkillPath"/>
+                    </HBox>
+                </VBox>
+            </TitledPane>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- Buttons -->
+            <HBox spacing="12" alignment="BOTTOM_RIGHT">
+                <Button fx:id="btnOK" text="OK" onAction="#onOK" style="-fx-padding: 8 30; -fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button fx:id="btnCancel" text="Cancel" onAction="#onCancel" style="-fx-padding: 8 30;"/>
+            </HBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

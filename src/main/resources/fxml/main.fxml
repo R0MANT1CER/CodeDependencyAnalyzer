@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.analyzer.controller.MainController"
+            style="-fx-font-family: 'Microsoft YaHei', 'Segoe UI'; -fx-font-size: 13;">
+
+    <top>
+        <VBox spacing="0">
+            <MenuBar fx:id="menuBar">
+                <Menu fx:id="menuFile" text="File">
+                    <MenuItem fx:id="miOpen" text="Open Project..." onAction="#onOpenProject"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem fx:id="miSettings" text="Settings..." onAction="#onOpenSettings"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem fx:id="miExit" text="Exit" onAction="#onExit"/>
+                </Menu>
+                <Menu fx:id="menuEdit" text="Edit">
+                    <MenuItem fx:id="miRefresh" text="Refresh Graph" onAction="#onRefreshGraph"/>
+                    <MenuItem fx:id="miClear" text="Clear Cache" onAction="#onClearCache"/>
+                </Menu>
+                <Menu fx:id="menuView" text="View">
+                    <CheckMenuItem fx:id="miShowDetails" text="Show Details" selected="true"/>
+                    <CheckMenuItem fx:id="miAutoMonitor" text="Auto Monitor" selected="false"/>
+                </Menu>
+                <Menu fx:id="menuMethod" text="Method">
+                    <MenuItem fx:id="miCallTree" text="Call Tree" onAction="#onGenerateMethodCallTree"/>
+                    <MenuItem fx:id="miImpact" text="Impact" onAction="#onGenerateImpactAnalysis"/>
+                    <MenuItem fx:id="miCycles" text="Cycles" onAction="#onDetectCycles"/>
+                    <MenuItem fx:id="miComplexity" text="Complexity" onAction="#onShowComplexityAnalysis"/>
+                    <MenuItem fx:id="miFields" text="Fields" onAction="#onTrackFieldAccess"/>
+                </Menu>
+                <Menu fx:id="menuHelp" text="Help">
+                    <MenuItem fx:id="miAbout" text="About BugScope" onAction="#onAbout"/>
+                </Menu>
+            </MenuBar>
+
+            <ToolBar fx:id="toolBar" style="-fx-padding: 5 10; -fx-spacing: 5;">
+                <Button fx:id="btnOpen" text="Open" onAction="#onOpenProject" style="-fx-padding: 6 12;"/>
+                <Button fx:id="btnRefresh" text="Refresh" onAction="#onRefreshGraph" style="-fx-padding: 6 12;"/>
+                <Button fx:id="btnAnalyze" text="Analyze" onAction="#onAnalyzeImpact" style="-fx-padding: 6 12;"/>
+                <Separator orientation="VERTICAL"/>
+                <Label fx:id="lblChart" text="Chart:"/>
+                <ComboBox fx:id="visualizationTypeCombo" prefWidth="160"/>
+                <Button fx:id="btnExport" text="Export" onAction="#onExportVisualization" style="-fx-padding: 6 12; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                <Separator orientation="VERTICAL"/>
+                <Button fx:id="btnCallTree" text="Tree" onAction="#onGenerateMethodCallTree" style="-fx-padding: 6 10; -fx-font-size: 12;"/>
+                <Button fx:id="btnImpact" text="Impact" onAction="#onGenerateImpactAnalysis" style="-fx-padding: 6 10; -fx-font-size: 12;"/>
+                <Button fx:id="btnComplexity" text="Cpx" onAction="#onShowComplexityAnalysis" style="-fx-padding: 6 10; -fx-font-size: 12;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <ProgressIndicator fx:id="loadingIndicator" visible="false" style="-fx-max-width: 18; -fx-max-height: 18;"/>
+            </ToolBar>
+
+            <HBox fx:id="infoBar" spacing="15" style="-fx-padding: 8 15; -fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+                <Label text="Project:" style="-fx-font-weight: bold;"/>
+                <Label fx:id="projectNameLabel" text="Not loaded"/>
+                <Separator orientation="VERTICAL"/>
+                <Label fx:id="classCountLabel" text="Classes: 0"/>
+                <Separator orientation="VERTICAL"/>
+                <Label fx:id="edgeCountLabel" text="Edges: 0"/>
+                <Separator orientation="VERTICAL"/>
+                <Label fx:id="monitorStatusLabel" text="Monitor: OFF"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane fx:id="splitPane" dividerPositions="0.22, 0.68">
+            <VBox>
+                <TitledPane fx:id="tpClassTree" animated="false" text="Class Tree" VBox.vgrow="ALWAYS">
+                    <VBox>
+                        <TextField fx:id="searchField" promptText="Search class..." style="-fx-padding: 6; -fx-font-size: 12;"/>
+                        <TreeView fx:id="classTreeView" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </TitledPane>
+            </VBox>
+
+            <VBox>
+                <TitledPane fx:id="tpGraph" animated="false" text="Dependency Graph" VBox.vgrow="ALWAYS">
+                    <WebView fx:id="graphWebView" VBox.vgrow="ALWAYS"/>
+                </TitledPane>
+            </VBox>
+
+            <TabPane fx:id="tabPane">
+                <Tab fx:id="tabDetails" text="Details" closable="false">
+                    <VBox spacing="8" style="-fx-padding: 10;">
+                        <TextArea fx:id="classDetailsArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"
+                                  promptText="Click a class to view details..." style="-fx-font-size: 12;"/>
+                    </VBox>
+                </Tab>
+                <Tab fx:id="tabImpact" text="Impact" closable="false">
+                    <VBox spacing="8" style="-fx-padding: 10;">
+                        <Label fx:id="lblImpactTitle" text="Enter class name to analyze:" style="-fx-font-weight: bold;"/>
+                        <HBox spacing="5">
+                            <TextField fx:id="impactAnalysisField" promptText="e.g. com.example.User" HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="btnAnalyzeImpact" text="Analyze" onAction="#onAnalyzeImpact" style="-fx-padding: 6 18; -fx-background-color: #dc3545; -fx-text-fill: white;"/>
+                        </HBox>
+                        <TextArea fx:id="impactResultArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"
+                                  promptText="Results shown here..." style="-fx-font-size: 12;"/>
+                    </VBox>
+                </Tab>
+                <Tab fx:id="tabSkill" text="AI Skill" closable="false">
+                    <VBox spacing="8" style="-fx-padding: 10;">
+                        <Label fx:id="skillPathLabel" text="Skill: not generated" style="-fx-font-size: 11; -fx-text-fill: gray;"/>
+                        <Button fx:id="btnGenerateSkill" text="Generate Skill" onAction="#onGenerateSkill" style="-fx-padding: 6 12; -fx-background-color: #007bff; -fx-text-fill: white;"/>
+                        <TextArea fx:id="skillInfoArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"
+                                  promptText="Click to generate..." style="-fx-font-size: 12;"/>
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </SplitPane>
+    </center>
+
+    <bottom>
+        <HBox fx:id="statusBar" spacing="15" style="-fx-padding: 5 15; -fx-background-color: #f0f0f0; -fx-border-color: #dee2e6; -fx-border-width: 1 0 0 0;">
+            <Label fx:id="statusLabel" text="Ready"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="fileMonitorLabel" text=""/>
+            <Label fx:id="bottomStatusLabel" text="BugScope v1.3"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

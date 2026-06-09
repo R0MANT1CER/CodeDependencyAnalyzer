@@ -1,0 +1,462 @@
+/* ========== 全局样式 ========== */
+* {
+    -fx-font-family: 'Segoe UI', 'Microsoft YaHei', Arial;
+    -fx-base: #ffffff;
+    -fx-control-inner-background: #fafafa;
+    -fx-text-base-color: #212121;
+}
+
+.root {
+    -fx-background-color: #ffffff;
+}
+
+.main-pane {
+    -fx-background-color: #ffffff;
+}
+
+/* ========== 菜单栏 ========== */
+.menu-bar {
+    -fx-padding: 0;
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.menu {
+    -fx-padding: 5 15;
+    -fx-text-fill: #212121;
+    -fx-background-color: transparent;
+}
+
+.menu:hover {
+    -fx-background-color: #eeeeee;
+}
+
+.menu:showing {
+    -fx-background-color: #e8e8e8;
+}
+
+.menu-item {
+    -fx-padding: 8 15;
+    -fx-text-fill: #212121;
+    -fx-background-color: #ffffff;
+    -fx-font-size: 12;
+}
+
+.menu-item:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.menu-item:focused {
+    -fx-background-color: #e3f2fd;
+}
+
+.separator-menu-item {
+    -fx-padding: 0;
+}
+
+/* ========== 工具栏 ========== */
+.tool-bar {
+    -fx-spacing: 10;
+    -fx-padding: 10;
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.tool-bar .separator {
+    -fx-background-color: #e0e0e0;
+}
+
+/* ========== 按钮 ========== */
+.button {
+    -fx-padding: 8 15;
+    -fx-font-size: 12;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 4, 0, 0, 2);
+}
+
+.button:pressed {
+    -fx-background-color: #3d8b40;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 1, 0, 0, 0);
+}
+
+.button:disabled {
+    -fx-background-color: #cccccc;
+    -fx-opacity: 0.6;
+}
+
+/* 次级按钮 */
+.button.secondary {
+    -fx-background-color: #2196F3;
+}
+
+.button.secondary:hover {
+    -fx-background-color: #1976D2;
+}
+
+/* ========== 文本输入 ========== */
+.text-field,
+.text-area {
+    -fx-padding: 8;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #212121;
+    -fx-font-size: 12;
+    -fx-control-inner-background: #ffffff;
+}
+
+.text-field:focused,
+.text-area:focused {
+    -fx-border-color: #4CAF50;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(76, 175, 80, 0.2), 4, 0, 0, 2);
+}
+
+.text-area {
+    -fx-font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    -fx-font-size: 11;
+    -fx-text-fill: #333333;
+    -fx-control-inner-background: #fafafa;
+    -fx-padding: 10;
+}
+
+.text-area:focused {
+    -fx-control-inner-background: #ffffff;
+}
+
+/* ========== 树视图 ========== */
+.tree-view {
+    -fx-font-size: 12;
+    -fx-text-fill: #212121;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+}
+
+.tree-view:focused {
+    -fx-border-color: #4CAF50;
+    -fx-border-width: 2;
+}
+
+.tree-cell {
+    -fx-padding: 5;
+    -fx-text-fill: #212121;
+    -fx-background-color: transparent;
+}
+
+.tree-cell:selected {
+    -fx-background-color: #c8e6c9;
+    -fx-text-fill: #1b5e20;
+    -fx-padding: 5;
+    -fx-border-radius: 3;
+}
+
+.tree-cell:selected:focused {
+    -fx-background-color: #81c784;
+    -fx-text-fill: #ffffff;
+}
+
+.tree-cell:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+/* ========== 标签页 ========== */
+.tab-pane {
+    -fx-padding: 0;
+    -fx-background-color: #ffffff;
+}
+
+.tab {
+    -fx-padding: 10 20;
+    -fx-font-size: 12;
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #666666;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.tab:selected {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #4CAF50;
+    -fx-border-color: #4CAF50;
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab:hover {
+    -fx-background-color: #eeeeee;
+}
+
+.tab-pane > .tab-header-area {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.tab-pane > .tab-header-area > .headers-region {
+    -fx-background-color: #f5f5f5;
+}
+
+.tab-close-button {
+    -fx-cursor: hand;
+}
+
+/* ========== 标签 ========== */
+.label {
+    -fx-text-fill: #212121;
+    -fx-font-size: 12;
+}
+
+.label.title {
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1b5e20;
+}
+
+.label.heading {
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212121;
+}
+
+.label.info {
+    -fx-text-fill: #1976D2;
+}
+
+.label.warning {
+    -fx-text-fill: #F57F17;
+}
+
+.label.error {
+    -fx-text-fill: #D32F2F;
+}
+
+.label.success {
+    -fx-text-fill: #388E3C;
+}
+
+/* ========== 分隔符 ========== */
+.separator {
+    -fx-padding: 5;
+}
+
+.separator:vertical {
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 5 10;
+}
+
+.separator:horizontal {
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 5 10;
+}
+
+/* ========== TitledPane (GroupBox) ========== */
+.titled-pane {
+    -fx-padding: 0;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+}
+
+.titled-pane > .title {
+    -fx-padding: 10 15;
+    -fx-font-weight: bold;
+    -fx-font-size: 12;
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: #212121;
+}
+
+.titled-pane:expanded > .title {
+    -fx-background-color: #f0f0f0;
+}
+
+.titled-pane > .content {
+    -fx-padding: 10;
+    -fx-background-color: #ffffff;
+}
+
+/* ========== 分割窗格 ========== */
+.split-pane {
+    -fx-background-color: #ffffff;
+}
+
+.split-pane:horizontal > .divider {
+    -fx-background-color: #e0e0e0;
+    -fx-padding: 0 1 0 1;
+}
+
+.split-pane:vertical > .divider {
+    -fx-background-color: #e0e0e0;
+    -fx-padding: 1 0 1 0;
+}
+
+/* ========== 复选框 ========== */
+.check-box {
+    -fx-text-fill: #212121;
+    -fx-font-size: 12;
+}
+
+.check-box:selected > .box {
+    -fx-background-color: #4CAF50;
+    -fx-border-color: #45a049;
+}
+
+.check-box > .box {
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1;
+    -fx-border-radius: 2;
+}
+
+/* ========== 单选按钮 ========== */
+.radio-button {
+    -fx-text-fill: #212121;
+    -fx-font-size: 12;
+}
+
+.radio-button:selected > .radio {
+    -fx-background-color: #4CAF50;
+    -fx-border-color: #45a049;
+}
+
+/* ========== 进度条 ========== */
+.progress-bar {
+    -fx-control-inner-background: #e0e0e0;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: #4CAF50;
+}
+
+.progress-indicator {
+    -fx-progress-color: #4CAF50;
+}
+
+/* ========== 下拉菜单 ========== */
+.combo-box {
+    -fx-padding: 8;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #212121;
+}
+
+.combo-box-popup > .list-view {
+    -fx-background-color: #ffffff;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-text-fill: #212121;
+    -fx-background-color: #ffffff;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected {
+    -fx-background-color: #c8e6c9;
+    -fx-text-fill: #1b5e20;
+}
+
+/* ========== 状态栏 ========== */
+.status-bar {
+    -fx-padding: 10;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1 0 0 0;
+    -fx-background-color: #fafafa;
+}
+
+/* ========== WebView (保持透明以适应主题) ========== */
+.web-view {
+    -fx-font-smoothing-type: gray;
+}
+
+/* ========== 滚动条 ========== */
+.scroll-bar:vertical > .increment-button,
+.scroll-bar:vertical > .decrement-button {
+    -fx-padding: 0;
+}
+
+.scroll-bar:vertical > .thumb {
+    -fx-background-color: #bdbdbd;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical > .thumb:hover {
+    -fx-background-color: #9e9e9e;
+}
+
+.scroll-bar:vertical > .thumb:pressed {
+    -fx-background-color: #757575;
+}
+
+.scroll-bar:horizontal > .thumb {
+    -fx-background-color: #bdbdbd;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:horizontal > .thumb:hover {
+    -fx-background-color: #9e9e9e;
+}
+
+.scroll-bar:horizontal > .thumb:pressed {
+    -fx-background-color: #757575;
+}
+
+/* ========== 自定义组件类 ========== */
+.stat-card {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 2, 0, 0, 1);
+}
+
+.stat-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 0, 0, 2);
+}
+
+.stat-value {
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4CAF50;
+}
+
+.stat-label {
+    -fx-font-size: 11;
+    -fx-text-fill: #999999;
+}
+
+/* ========== 告警对话框 ========== */
+.dialog-pane {
+    -fx-background-color: #ffffff;
+}
+
+.dialog-pane > .header-panel {
+    -fx-background-color: #f5f5f5;
+}
+
+.dialog-pane > .content {
+    -fx-padding: 20;
+}
+
+.dialog-pane > .button-bar > .container {
+    -fx-spacing: 10;
+    -fx-padding: 15;
+}
